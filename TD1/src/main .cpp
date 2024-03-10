@@ -1,6 +1,6 @@
 #include <iostream>
 #include "fraction.hpp"
-#include "utils.hpp"
+// #include "utils.hpp"
 
 int main()
 {
@@ -88,11 +88,11 @@ int main()
 
 
     //EXO 5
-    std::cout << std::endl;
-    std::cout << "f1 += f2 , f1 = " << simplify(f1 += f2) << std::endl;
-    std::cout << "f1 -= f2 , f1 = " << simplify(f1 -= f2) << std::endl;
-    std::cout << "f1 *= f2 , f1 = " << simplify(f1 *= f2) << std::endl;
-    std::cout << "f1 /= f2 , f1 = " << simplify(f1 /= f2) << std::endl;
+    // std::cout << std::endl;
+    // std::cout << "f1 += f2 , f1 = " << simplify(f1 += f2) << std::endl;
+    // std::cout << "f1 -= f2 , f1 = " << simplify(f1 -= f2) << std::endl;
+    // std::cout << "f1 *= f2 , f1 = " << simplify(f1 *= f2) << std::endl;
+    // std::cout << "f1 /= f2 , f1 = " << simplify(f1 /= f2) << std::endl;
 
     return 0;
 }
