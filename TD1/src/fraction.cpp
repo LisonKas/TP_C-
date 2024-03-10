@@ -11,37 +11,41 @@ std::ostream& operator<<(std::ostream& os, Fraction const& p) {
     return os << '(' << p.numerator << "/" << p.denominator << ')';
 }
 
-Fraction operator+(Fraction const& f1, Fraction const& f2) {
+Fraction operator+(Fraction f1, Fraction const& f2) {
     // return simplify({
     //     f1.numerator * f2.denominator + f2.numerator * f1.denominator,
     //     f1.denominator * f2.denominator
     // });
-    return simplify(f1 += f2);
+    f1 += f2;
+    return simplify(f1);
 }
 
 
-Fraction operator-(Fraction const& f1, Fraction const& f2) {
+Fraction operator-(Fraction f1, Fraction const& f2) {
     // return simplify({
     //     f1.numerator * f2.denominator - f2.numerator * f1.denominator,
     //     f1.denominator * f2.denominator
     // });
-    return simplify(f1 -= f2);
+    f1 -= f2;
+    return simplify(f1);
 }
 
-Fraction operator*(Fraction const& f1, Fraction const& f2) {
+Fraction operator*(Fraction f1, Fraction const& f2) {
     // return simplify({
     //     f1.numerator * f2.numerator,
     //     f1.denominator * f2.denominator
     // });
-    return simplify(f1 *= f2);
+    f1 *= f2;
+    return simplify(f1);
 }
 
-Fraction operator/(Fraction const& f1, Fraction const& f2) {
+Fraction operator/(Fraction f1, Fraction const& f2) {
     // return simplify({
     //     f1.numerator * f2.denominator,
     //     f1.denominator * f2.numerator
     // });
-    return simplify(f1 /= f2);
+    f1 /= f2;
+    return simplify(f1);
 }
 
 bool operator==(Fraction const& f1, Fraction const& f2){
