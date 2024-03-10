@@ -5,7 +5,29 @@ struct Fraction {
     unsigned int numerator;
     unsigned int denominator;
 
-    // void display();
+    Fraction& operator+=(Fraction const& f){
+        numerator = numerator * f.denominator + f.numerator * denominator;
+        denominator = denominator * f.denominator;
+        return *this;
+    }
+
+    Fraction& operator-=(Fraction const& f){
+        numerator = numerator * f.denominator - f.numerator * denominator;
+        denominator = denominator * f.denominator;
+        return *this;
+    }
+
+    Fraction& operator*=(Fraction const& f){
+        numerator = numerator * f.numerator;
+        denominator = denominator * f.denominator;
+        return *this;
+    }
+
+    Fraction& operator/=(Fraction const& f){
+        numerator = numerator * f.denominator;
+        denominator = denominator * f.numerator;
+        return *this;
+    }
 };
 
 std::ostream& operator<<(std::ostream& os, Fraction const& p);
@@ -13,6 +35,7 @@ Fraction operator+(Fraction const& f1, Fraction const& f2);
 Fraction operator-(Fraction const& f1, Fraction const& f2);
 Fraction operator*(Fraction const& f1, Fraction const& f2);
 Fraction operator/(Fraction const& f1, Fraction const& f2);
+
 bool operator==(Fraction const& f1, Fraction const& f2);
 bool operator!=(Fraction const& f1, Fraction const& f2);
 bool operator<(Fraction const& f1, Fraction const& f2);

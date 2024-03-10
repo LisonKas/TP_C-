@@ -1,5 +1,6 @@
 #include <iostream>
 #include "fraction.hpp"
+#include "utils.hpp"
 
 int main()
 {
@@ -32,6 +33,7 @@ int main()
     std::cout << f1/f2;
     std::cout << std::endl;
 
+    //EXO 3
     std::cout << std::endl << "f1 == f2 ? ";
     std::cout << (f1==f2);
     std::cout << std::endl << "f1 != f2 ? ";
@@ -48,6 +50,7 @@ int main()
     std::cout << (Fraction{1, 6}+Fraction{2, 6}) << std::endl;
 
 
+    //EXO 4
     std::cout << std::endl << "f1 < f2 ? ";
     std::cout << (f1<f2);
     std::cout << std::endl << "f2 < f1 ? ";
@@ -82,6 +85,14 @@ int main()
     std::cout << std::endl << "f1 >= f1 ? ";
     std::cout << (f1>=f1);
     std::cout << std::endl;
+
+
+    //EXO 5
+    std::cout << std::endl;
+    std::cout << "f1 += f2 , f1 = " << simplify(f1 += f2) << std::endl;
+    std::cout << "f1 -= f2 , f1 = " << simplify(f1 -= f2) << std::endl;
+    std::cout << "f1 *= f2 , f1 = " << simplify(f1 *= f2) << std::endl;
+    std::cout << "f1 /= f2 , f1 = " << simplify(f1 /= f2) << std::endl;
 
     return 0;
 }

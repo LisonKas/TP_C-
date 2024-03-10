@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/main.dir/src/main.cpp.o CMakeFiles/main.dir/src/fraction.cpp.o CMakeFiles/main.dir/src/utils.cpp.o -o ../bin/Debug/main 

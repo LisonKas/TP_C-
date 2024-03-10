@@ -1,4 +1,5 @@
 #include "utils.hpp"
+//#include "fraction.hpp"
 
 unsigned int gcd(unsigned int a, unsigned int b) {
     while (b != 0) {
