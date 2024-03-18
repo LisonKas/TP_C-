@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/lison/IMAC/C++/SEMESTRE 2/TD/TD2/build",
-  "command": "/usr/bin/g++   -g -o CMakeFiles/exo1.dir/src/exo1.cpp.o -c \"/home/lison/IMAC/C++/SEMESTRE 2/TD/TD2/src/exo1.cpp\"",
-  "file": "/home/lison/IMAC/C++/SEMESTRE 2/TD/TD2/src/exo1.cpp"
-}
-]

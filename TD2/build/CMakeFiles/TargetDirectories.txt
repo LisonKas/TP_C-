@@ -1,3 +1,0 @@
-/home/lison/IMAC/C++/SEMESTRE 2/TD/TD2/build/CMakeFiles/exo1.dir
-/home/lison/IMAC/C++/SEMESTRE 2/TD/TD2/build/CMakeFiles/edit_cache.dir
-/home/lison/IMAC/C++/SEMESTRE 2/TD/TD2/build/CMakeFiles/rebuild_cache.dir

@@ -1,1 +1,0 @@
-/usr/bin/g++ -g -rdynamic CMakeFiles/exo2.dir/src/exo2.cpp.o -o exo2 

@@ -1,1 +1,0 @@
-/usr/bin/g++ -g -rdynamic CMakeFiles/exo1.dir/src/exo1.cpp.o -o exo1 
