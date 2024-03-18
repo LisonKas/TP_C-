@@ -88,11 +88,16 @@ int main()
 
 
     //EXO 5
-    // std::cout << std::endl;
-    // std::cout << "f1 += f2 , f1 = " << simplify(f1 += f2) << std::endl;
-    // std::cout << "f1 -= f2 , f1 = " << simplify(f1 -= f2) << std::endl;
-    // std::cout << "f1 *= f2 , f1 = " << simplify(f1 *= f2) << std::endl;
-    // std::cout << "f1 /= f2 , f1 = " << simplify(f1 /= f2) << std::endl;
+    std::cout << std::endl;
+    std::cout << "f1 += f2 , f1 = " << (f1 += f2) << std::endl;
+    std::cout << "f1 -= f2 , f1 = " << (f1 -= f2) << std::endl;
+    std::cout << "f1 *= f2 , f1 = " << (f1 *= f2) << std::endl;
+    std::cout << "f1 /= f2 , f1 = " << (f1 /= f2) << std::endl;
+
+    //EXO 6
+    Fraction f4 {1, 2};
+    float d1 {static_cast<float>(f4)};
+    std::cout << "f4 en float = " << d1 << std::endl;
 
     return 0;
 }

@@ -28,6 +28,11 @@ struct Fraction {
         denominator = denominator * f.numerator;
         return *this;
     }
+
+    //exo 6 ...
+    float to_float() const;
+
+    operator float() const;
 };
 
 std::ostream& operator<<(std::ostream& os, Fraction const& p);
