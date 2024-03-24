@@ -68,6 +68,30 @@ void quick_sort(std::vector<float> & vec) {
     quick_sort(vec, 0, vec.size() - 1);
 }
 
+//EXO 4
+int search(std::vector<int> tab, int value){
+    int index {-2};
+    int left {0}, right {static_cast<int>(tab.size())-1};
+    int middle {(left + right)/2};
+    while(index==-2){
+        if(tab[middle]<value){
+            left = middle;
+        }
+        else if(tab[middle]>value){
+            right = middle;
+        }
+        else{
+            index = middle;
+        }
+
+        if(left == right){
+            index = -1;
+        }
+        middle = (left + right)/2;
+    }
+    return index;
+}
+
 int main(){
     //EXO 1
     std::vector<int> array {8,4,5,7,2,1,10,9,6};
@@ -107,6 +131,14 @@ int main(){
         std::vector<int> tableau = generate_random_vector(100);
         bubble_sort(tableau);
     }
+
+    //EXO 4
+    int index1 {search({1, 2, 2, 3, 4, 8, 12}, 8)};  
+    int index2 {search({1, 2, 3, 3, 6, 14, 12, 15}, 15)};
+    int index3 {search({2, 2, 3, 4, 5, 8, 12, 15, 16}, 16)};
+    int index4 {search({5, 6, 7, 8, 9, 10, 11, 12, 13}, 6)};
+    int index5 {search({1, 2, 3, 4, 5, 6, 7, 8, 9}, 10)};
+    std::cout << "Dans l'ordre voici les index des valeurs recherchées pour chaque tableau exemple de l'énoncé : " << index1 << ", " << index2 << ", " << index3 << ", " << index4 << ", " << index5 << "." << std::endl;
 
     return 0;
 }
