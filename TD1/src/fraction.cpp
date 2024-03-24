@@ -49,24 +49,29 @@ Fraction operator/(Fraction f1, Fraction const& f2) {
 }
 
 bool operator==(Fraction const& f1, Fraction const& f2){
-    if(f1.numerator!=f2.numerator){
-        return false;
-    }
-    else if(f1.denominator!=f2.denominator){
-        return false;
-    }
-    else {
-        return true;
-    }
+    // if(f1.numerator!=f2.numerator){
+    //     return false;
+    // }
+    // else if(f1.denominator!=f2.denominator){
+    //     return false;
+    // }
+    // else {
+    //     return true;
+    // }
+    Fraction frac1 {simplify(f1)};
+    Fraction frac2 {simplify(f2)};
+    bool egal {frac1.numerator==frac2.numerator && frac1.denominator==frac2.denominator};
+    return egal;
 }
 
 bool operator!=(Fraction const& f1, Fraction const& f2){
-    if(f1==f2){
-        return false;
-    }
-    else {
-        return true;
-    }
+    // if(f1==f2){
+    //     return false;
+    // }
+    // else {
+    //     return true;
+    // }
+    return !(f1==f2);
 }
 
 bool operator<(Fraction const& f1, Fraction const& f2){
