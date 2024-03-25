@@ -104,7 +104,7 @@ int main(){
         std::cout << "Le tableau n'est pas trié" << std::endl;
     }
 
-    //EXO 2
+    //EXO 2 ---------------------------------------------------------------------------------------------------
     quick_sort(array2);
     if (is_sorted(array2)) {
         std::cout << "Le tableau array2 est trié" << std::endl;
@@ -117,19 +117,28 @@ int main(){
     }
     
 
-    //EXO 3
+    //EXO 3 ----------------------------------------------------------------------------------------------------
+    std::vector<float> data = generate_random_vector2(100);
+    std::vector<int> tableau = generate_random_vector(100);
+    std::vector<float> data2 = generate_random_vector2(100);
     {
         ScopedTimer timer("Tri rapide");
-        std::vector<float> data = generate_random_vector2(100);
         quick_sort(data);
     }
     {
         ScopedTimer timer("Tri à bulles");
-        std::vector<int> tableau = generate_random_vector(100);
         bubble_sort(tableau);
     }
+    {
+        ScopedTimer timer("Le std::sort");
+        std::sort(data2.begin(), data2.end());
+    }
+        /*Je peux en constater que le tri rapide est plus rapide (d'où son nom) que le tri à bulles. 
+        Le tri récursif en séparant les parties du tableau est plus efficace. 
+        Le std::sort est plus efficace que le tri à bulles, mais moins rapide que le tri récursif.
+        Le tri récursif est donc le programme de tri le plus efficace.*/
 
-    //EXO 4
+    //EXO 4 -----------------------------------------------------------------------------------------------------
     int index1 {search({1, 2, 2, 3, 4, 8, 12}, 8)};  
     int index2 {search({1, 2, 3, 3, 6, 14, 12, 15}, 15)};
     int index3 {search({2, 2, 3, 4, 5, 8, 12, 15, 16}, 16)};
