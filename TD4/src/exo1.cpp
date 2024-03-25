@@ -42,6 +42,8 @@ bool is_palindrome(std::string const& chaine){
             palindrome = false;
             break;
         }
+        it++;
+        that++;
     }
     return palindrome;
 }
