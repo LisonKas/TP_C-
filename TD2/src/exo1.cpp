@@ -70,24 +70,21 @@ void quick_sort(std::vector<float> & vec) {
 
 //EXO 4
 int search(std::vector<int> tab, int value){
-    int index {-2};
+    int index {-1};
     int left {0}, right {static_cast<int>(tab.size())-1};
-    int middle {(left + right)/2};
-    while(index==-2){
+    int middle {};
+    while(left<=right){
+        middle = left + (right - left)/2;
         if(tab[middle]<value){
-            left = middle;
+            left = middle + 1;
         }
         else if(tab[middle]>value){
-            right = middle;
+            right = middle - 1;
         }
         else{
             index = middle;
+            break;
         }
-
-        if(left == right){
-            index = -1;
-        }
-        middle = (left + right)/2;
     }
     return index;
 }
