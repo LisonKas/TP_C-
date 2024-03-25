@@ -32,6 +32,20 @@ std::vector<std::string> split_string(std::string const& str){
     return string_casse;
 } //Question 2
 
+//EXO 3
+bool is_palindrome(std::string const& chaine){
+    bool palindrome {true};
+    auto that {chaine.rbegin()};
+    auto it {chaine.begin()};
+    while(that!=chaine.rend() && it!=chaine.end()){
+        if(*it != *that){ //!std::equal(it, that)
+            palindrome = false;
+            break;
+        }
+    }
+    return palindrome;
+}
+
 int main(){
     std::srand(std::time(nullptr));
 
@@ -82,7 +96,11 @@ int main(){
     std::vector<std::string> mots {split_string(phrase)};
     for(auto i {mots.begin()}; i!=mots.end(); i++){
         std::cout << *i << std::endl;
-    }
+    } //Question 2
+
+    //EXO 3
+    std::string pal {"kayak"};
+    std::cout << pal << " est-il un palindrome ? : " << is_palindrome(pal) << std::endl;
 
     return 0;
 }
