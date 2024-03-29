@@ -57,6 +57,7 @@ std::vector<Token> tokenize(std::vector<std::string> const& words){
             }
         }
     }
+    return tokens;
 }
 
 //Question 3
@@ -67,27 +68,37 @@ float npi_evaluate(std::vector<Token> const& tokens){
         if(element.type == TokenType::OPERAND){
             pile.push(element.value);
         }
-        else {
-            float nb1 {pile.top()};
-            pile.pop();
-            float nb2 {pile.top()};
-            pile.pop();
+        else if(element.type == TokenType::OPERATOR){
+            if(!(pile.size() < 2)){
+                float nb1 {pile.top()};
+                pile.pop();
+                float nb2 {pile.top()};
+                pile.pop();
 
-            if(element.op == Operator::ADD){
-                calcul = nb1 + nb2;
-                pile.push(calcul);
+                if(element.op == Operator::ADD){
+                    calcul = nb1 + nb2;
+                    pile.push(calcul);
+                }
+                else if(element.op == Operator::SUB){
+                    calcul = nb1 - nb2;
+                    pile.push(calcul);
+                }
+                else if(element.op == Operator::MUL){
+                    calcul = nb1 * nb2;
+                    pile.push(calcul);
+                }
+                else if(element.op == Operator::DIV){
+                    if(nb2!=0){
+                        calcul = nb1 / nb2;
+                        pile.push(calcul);
+                    }
+                    else {
+                        return 0;
+                    }
+                }
             }
-            else if(element.op == Operator::SUB){
-                calcul = nb1 - nb2;
-                pile.push(calcul);
-            }
-            else if(element.op == Operator::MUL){
-                calcul = nb1 * nb2;
-                pile.push(calcul);
-            }
-            else if(element.op == Operator::DIV){
-                calcul = nb1 / nb2;
-                pile.push(calcul);
+            else {
+                return 0;
             }
         }
     }
@@ -98,6 +109,15 @@ int main(){
 
     std::vector<std::string> exemple1 {"3.0", "4.0", "+"};
     std::vector<Token> tokens {tokenize(exemple1)};
+    for(Token element : tokens){
+        if(element.type == TokenType::OPERATOR){
+            if(element.op == Operator::ADD){
+                std::cout << "ADD" << std::endl;
+            }
+        } else {
+            std::cout << "la valeur du token est " << element.value << std::endl;
+        }
+    }
     std::cout << "Le résultat du calcul 3.0 4.0 + est : " << npi_evaluate(tokens) << std::endl;
 
     return 0;
