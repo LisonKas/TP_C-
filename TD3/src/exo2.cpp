@@ -15,6 +15,27 @@ struct Token {
   Operator op;
 };
 
+bool is_floating(char const& chaine){
+    bool point_exist {false};
+        if(isdigit(chaine)){
+            return true;
+        }
+        else if(chaine == '.'){
+            if(point_exist){
+                point_exist = false;
+                return point_exist;
+            }
+            else {
+                point_exist = true;
+            }
+        }
+        else {
+            point_exist = false;
+            return point_exist;
+        }
+    return point_exist;
+} //Question 2
+
 //Question 1
 Token make_token(float value){
     Token new_token {};
@@ -38,7 +59,7 @@ std::vector<Token> tokenize(std::vector<std::string> const& words){
     for(std::string element : words){
         bool is_digit {true};
         for(int i {0}; i<element.size(); i++){
-            if(!isdigit(element[i]) && element[i]!='.'){
+            if(!is_floating(element[i])){
                 is_digit = false;
             }
         }

@@ -36,7 +36,7 @@ bool is_floating(std::string const& chaine){
         else if(element == '.'){
             if(point_exist){
                 point_exist = false;
-                break;
+                return point_exist;
             }
             else {
                 point_exist = true;
@@ -44,7 +44,7 @@ bool is_floating(std::string const& chaine){
         }
         else {
             point_exist = false;
-            break;
+            return point_exist;
         }
     }
     return point_exist;
@@ -60,22 +60,22 @@ float npi_evaluate(std::vector<std::string> const& tokens){
                 pile.push(stod(token));
             }
             else {
-                float nb1 {pile.top()};
+                float nb_right {pile.top()};
                 pile.pop();
-                float nb2 {pile.top()};
+                float nb_left {pile.top()};
                 pile.pop();
 
                 if(token == "+"){
-                    calcul = nb1 + nb2;
+                    calcul = nb_left + nb_right;
                     pile.push(calcul);
                 } else if(token == "-"){
-                    calcul = nb1 - nb2;
+                    calcul = nb_left - nb_right;
                     pile.push(calcul);
                 } else if(token == "*"){
-                    calcul = nb1 * nb2;
+                    calcul = nb_left * nb_right;
                     pile.push(calcul);
                 } else if(token == "/"){
-                    calcul = nb1 / nb2;
+                    calcul = nb_left / nb_right;
                     pile.push(calcul);
                 }
             }
