@@ -130,6 +130,80 @@ void Node::display_infixe() const{
 }
 
 //Question 7
-std::vector<Node const*> Node::prefixe() const{
+std::vector<Node const*> Node::prefixe() const {
+    std::vector<Node const*> nodes;
 
+    nodes.push_back(this);
+    if (left != nullptr) {
+        auto left_nodes = left->prefixe();
+        nodes.insert(nodes.end(), left_nodes.begin(), left_nodes.end());
+    }
+    if (right != nullptr) {
+        auto right_nodes = right->prefixe();
+        nodes.insert(nodes.end(), right_nodes.begin(), right_nodes.end());
+    }
+
+    return nodes;
+}
+
+//Question 9
+Node*& most_left(Node*& node) {
+    if (node == nullptr || node->left == nullptr) {
+        return node;
+    }
+    return most_left(node->left);
+}
+
+//Question 10
+bool remove(Node*& node, int value) {
+    if (node == nullptr) {
+        return false; 
+    }
+    
+    if (value < node->value) {
+        return remove(node->left, value);
+    } 
+    else if (value > node->value) {
+        return remove(node->right, value);
+    } 
+    else {
+        if (node->is_leaf()) {
+            delete node;
+            node = nullptr;
+            return true;
+        } else if (node->left == nullptr) {
+            Node* temp = node;
+            node = node->right;
+            delete temp;
+            return true;
+        } else if (node->right == nullptr) {
+            Node* temp = node;
+            node = node->left;
+            delete temp;
+            return true;
+        } else {
+            Node*& minRightSubtree = most_left(node->right);
+            node->value = minRightSubtree->value;
+            return remove(minRightSubtree, minRightSubtree->value);
+        }
+    }
+}
+
+//Question 11
+void delete_tree(Node* node){
+    if(node->is_leaf()){
+        delete node;
+    }
+    else {
+        delete_tree(node->right);
+        delete_tree(node->left);
+        if(node->is_leaf()){
+            delete node;
+            std::cout << "node supprimé" << std::endl;
+        }
+        else{
+            std::cout << "node n'est pas une feuille..." << std::endl;
+        }
+        
+    }
 }

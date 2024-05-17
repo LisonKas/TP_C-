@@ -38,5 +38,29 @@ int main(){
     // pretty_print_left_right(*newNode);
     newNode->display_infixe();
 
+    //Question 7
+    std::vector<Node const*> nodes_prefixe {newNode->prefixe()};
+    for(int i {0}; i<nodes_prefixe.size(); i++){
+        pretty_print_left_right(*nodes_prefixe[i]);
+        std::cout << "Prochain noeud : " << std::endl;
+    }
+    std::cout << "Fin du préfixe" << std::endl;
+
+    std::cout << std::endl;
+    //Question 9
+    pretty_print_left_right(*most_left(newNode));
+    std::cout << std::endl;
+
+    if(remove(newNode, 44)){
+        pretty_print_left_right(*newNode);
+    }
+    else {
+        std::cout << "La valeur 44 n'as pas pu être supprimé car elle n'existe pas" << std::endl;
+    }
+
+    //Question 11
+    std::cout << "suppression : " << std::endl;
+    delete_tree(newNode);
+
     return 0;
 }
