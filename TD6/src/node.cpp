@@ -191,19 +191,18 @@ bool remove(Node*& node, int value) {
 
 //Question 11
 void delete_tree(Node* node){
-    if(node->is_leaf()){
-        delete node;
+    if(node == nullptr){
+        return;
     }
-    else {
-        delete_tree(node->right);
+
+    if(node->left != nullptr){
         delete_tree(node->left);
-        if(node->is_leaf()){
-            delete node;
-            std::cout << "node supprimé" << std::endl;
-        }
-        else{
-            std::cout << "node n'est pas une feuille..." << std::endl;
-        }
-        
     }
+    if(node->right != nullptr){
+        delete_tree(node->right);
+    }
+        
+    delete node;
+    std::cout << "Noeud supprimé" << std::endl;
+
 }

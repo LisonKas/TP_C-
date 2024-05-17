@@ -61,6 +61,7 @@ int main(){
     //Question 11
     std::cout << "suppression : " << std::endl;
     delete_tree(newNode);
+    // pretty_print_left_right(*newNode);
 
     return 0;
 }
