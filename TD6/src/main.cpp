@@ -63,5 +63,35 @@ int main(){
     delete_tree(newNode);
     // pretty_print_left_right(*newNode);
 
+    //EXO 2
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << "-----------------EXERCICE 2------------------" << std::endl;
+    Node* noeud {create_node(5)};
+    noeud->insert(3);
+    noeud->insert(7);
+    noeud->insert(4);
+    noeud->insert(6);
+    noeud->insert(8);
+    noeud->insert(1);
+    noeud->insert(9);
+    noeud->insert(0);
+
+    std::cout << "L'arbre après initialisation (question 1): " << std::endl;
+    pretty_print_left_right(*noeud);
+
+    std::cout << "Affichage infixe (question 2): " << std::endl;
+    noeud->display_infixe();
+
+    std::cout << "Somme à partir du chemin préfixe : " << std::endl;
+    std::vector<Node const*> noeud_prefixe {noeud->prefixe()};
+    int somme {0};
+    for(int i {0}; i<noeud_prefixe.size(); i++){
+        somme += noeud_prefixe[i]->value;
+    }
+    std::cout << "Somme = " << somme << std::endl;
+
+    std::cout << "Hauteur de l'arbre : " << noeud->height() << std::endl;
+
     return 0;
 }
