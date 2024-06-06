@@ -30,37 +30,14 @@ std::vector<std::pair<std::string, float>> get_robots_fix(size_t size) {
     return robots_fix;
 }
 
-// std::unordered_map<std::string, std::vector<float>> robots_fixes_map(std::vector<std::pair<std::string, float>> const& robots_fixes){
-//     std::unordered_map<std::string, std::vector<float>> robot_and_fixes;
-//     std::vector<float> reparations;
-//     for(int i {0}; i<robots_fixes.size(); i++){
-//         auto number = robot_and_fixes.find(robots_fixes[i].first);
-//         if(number != robot_and_fixes.end()){
-//             for(int j {0}; j<robots_fixes.size(); j++){
-//                 if(robots_fixes[j].first == robots_fixes[i].first){
-//                     reparations.push_back(robots_fixes[j].second);
-//                 }
-//             }
-//         }
-//         robot_and_fixes.insert(std::make_pair(robots_fixes[i].first, reparations));
-
-//     }
-//     return robot_and_fixes;
-// }
-
-
-//Truc 
 std::unordered_map<std::string, std::vector<float>> robots_fixes_map(std::vector<std::pair<std::string, float>> const& robots_fixes) {
     std::unordered_map<std::string, std::vector<float>> robot_and_fixes;
 
     for (const auto& robot_fix : robots_fixes) {
-        // Vérifie si le robot existe déjà dans la map
         auto it = robot_and_fixes.find(robot_fix.first);
         if (it != robot_and_fixes.end()) {
-            // Si le robot existe déjà, ajoute simplement le coût à son vecteur de réparations
             it->second.push_back(robot_fix.second);
         } else {
-            // Si le robot n'existe pas, ajoute une nouvelle entrée dans la map
             robot_and_fixes[robot_fix.first] = {robot_fix.second};
         }
     }
@@ -68,18 +45,25 @@ std::unordered_map<std::string, std::vector<float>> robots_fixes_map(std::vector
     return robot_and_fixes;
 }
 
-
+float tab_to_sum(std::vector<float> tab){
+    float sum {0.0f};
+    for(int i {0}; i<tab.size(); i++){
+        sum += tab[i];
+    }
+    return sum;
+}
 
 
 int main(){
     std::vector<std::pair<std::string, float>> exemple_get_robot {get_robots_fix(10)};
-    std::cout << "Exemple de tableau avec std::pair : " << std::endl; 
+    std::cout << "Exemple de tableau avec get_robots_fix : " << std::endl; 
     for(int i {0}; i<exemple_get_robot.size(); i++){
         std::cout << "First : " << exemple_get_robot[i].first << " et Second : " << exemple_get_robot[i].second << ", " << std::endl;
     }
     std::cout << std::endl;
+
     std::unordered_map<std::string, std::vector<float>> exemple_map {robots_fixes_map(exemple_get_robot)};
-    std::cout << "Exemple de tableau avec unordered_map : " << std::endl; 
+    std::cout << "Exemple de tableau avec robots_fixes_map à partir du tableau précédent : " << std::endl; 
     for(std::pair<const std::string, std::vector<float, std::allocator<float>>> pair : exemple_map){
         std::cout << "Pour " << pair.first << " et Second : [ ";
         for(int i {0}; i<pair.second.size(); i++){
@@ -88,6 +72,15 @@ int main(){
         std::cout << "]" << std::endl;
     }
     std::cout << std::endl;
+
+    std::vector<float> exemple_tab {1.0f, 6.0f, 7.0f, 2.0f};
+    std::cout << "exemple de tab_to_sum : " << tab_to_sum(exemple_tab) << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "On reprends le tableau précédent de robots_fixes_map et on affiche leur somme de réparation : " << std::endl;
+    for(auto& robot : exemple_map){
+        std::cout << "Robot " << robot.first << " : " << tab_to_sum(robot.second) << " de coût total de réparations" << std::endl;
+    }
 
     return 0;
 }
